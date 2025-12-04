@@ -20,30 +20,15 @@ Our analysis may benefit anyone who is concerned about their aging brain and wan
 
 To answer our question, we plan to use the data from an fMRI study of the aging brain in acute ketosis. We plan to create scatterplots from the data to analyze the relationships between BMI vs HOMA and age vs HOMA. 
 
-##Data Processing and Cleaning
-
-
-
-
-
 ## Data
 
-To perform our analysis, we used data from an fMRI study of the aging brain in acute ketosis, which was found from openneuro.org, an open-source platform with public datasets containing neuroimaging data. The study involved scanning participants in a fasted state before and after they were administered insulin or glucose bolus based on body weight. Our data consists of 101 participants, aged 21-79, with the variables, participant_id, age, sex, BMI, bodyweight, fasting insulin, HbA1C, and HOMA. To clean the data, we removed the variables irrelevant to our analysis (sex, bodyweight, and HbA1C). 
+To perform our analysis, we used data from an fMRI study of the aging brain in acute ketosis, which was found from openneuro.org, an open-source platform with public datasets containing neuroimaging data. The study involved scanning participants in a fasted state before and after they were administered insulin or glucose bolus based on body weight. Our data consists of 101 participants, aged 21-79, with the variables, participant_id, age, sex, BMI, bodyweight, fasting insulin, HbA1C, and HOMA.  
 
+## Data Cleaning
 
+To clean the data, we removed the variables irrelevant to our analysis (sex, bodyweight, and HbA1C). We also capitalized the remaining variable names to a more uniform syntax for easier reference. Now, we are ready to analyze a cleaned data set with the variables, Participant_ID, Age, BMI, HOMA, and Fasting Insulin.
 
-<<<<<<< HEAD
-=======
-- Prelim visualization
-- What do they suggest about the hypothesis, model, or sim we are trying to perform?
-Our data includes word HOMA, BMI.
-HOMA is a score combining glucose + insulin. Higher the HOMA = Bad glucose fuel.
-Bad glucose fuel = higher insulin resistance.
--Brain's activity is depends on glucose, its main fuel source. if we have bad glucose fuel, it leads to brain aging faster.
-We had two hypothesis. first one is "if age is older then HOMA will be increase"
-
-
-## Visualization and Analysis
+## Visualizations
 
 HOMA is a score combining glucose + insulin. when HOMA is high that means bad glucose fuel(insulin resistance) which can relate to brain aging.
 
@@ -82,6 +67,10 @@ high HOMA which can be high insulin resistance = glucose fuel less efficiently
 Expected outcomes for age & HOMA, we are expecting older the age = higher the HOMA for hypothesis 1, and 
 for BMI & HOMA, we are expecting higher the BMI = higher the HOMA
 according to data we have and visualized scatter plot graph, we could observe age is not really related to HOMA, yet BMI is relevant to HOMA. As BMI increases, HOMA increases as well.
+
+## Analysis
+
+[tables w/ p-values and other relevant values go here; cor.test() on the variables?]
 
 ## Conclusions
 Age was not really matter to HOMA, while BMI was affecting HOMA. Since we mentioned about how high HOMA = Bad glucose fuel = higher
