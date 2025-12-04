@@ -1,0 +1,41 @@
+---
+title: "Functions"
+output: html_document
+date: "2025-12-04"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Import required Libraries through the requirements.R file and import uncleaned data.
+```{r include=FALSE}
+source("00_requirements.R")
+uncleanData <- read_tsv("participants.tsv")
+```
+
+Changes column names to a more uniform syntaxing for easier reference and removes unused varaiables from the dataset.
+
+```{r}
+
+cleanData <- uncleanData[,!names(uncleanData) %in% c("HbA1c", "sex", "bodyweight")]
+names(cleanData)[names(cleanData) == "fasting insulin"] <- "Fasting Insulin"
+names(cleanData)[names(cleanData) == "age"] <- "Age"
+names(cleanData)[names(cleanData) == "participant_id"] <- "Participant_ID"
+
+print(cleanData)
+```
+
+```{r}
+source("00_requirements.r")
+source("DataProcessing_Cleaning.R")
+```
+
+
+
+```{r}
+plot(x = cleanData$Age , y = cleanData$HOMA , xlab = "age", ylab = "HOMA", main = "Graph of Age and HOMA", sub = "how age is related to HOMA")
+
+abline(h = 2.5, col = "red")
+
+```

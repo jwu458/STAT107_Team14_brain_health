@@ -23,7 +23,7 @@ To answer our question, we plan to use the data from an fMRI study of the aging 
 ##Data Processing and Cleaning
 
 Import required Libraries through the requirements.R file and import uncleaned data.
-```{r setup, include=FALSE}
+```{r include=FALSE}
 source("00_requirements.R")
 uncleanData <- read_tsv("participants.tsv")
 ```
@@ -60,7 +60,6 @@ Bad glucose fuel = higher insulin resistance.
 -Brain's activity is depends on glucose, its main fuel source. if we have bad glucose fuel, it leads to brain aging faster.
 We had two hypothesis. first one is "if age is older then HOMA will be increase"
 
->>>>>>> 2b2eaac1bd5584e0618016d87e92d3993afab768
 
 ## Visualization and Analysis
 
