@@ -22,7 +22,7 @@ To answer our question, we plan to use the data from an fMRI study of the aging 
 
 ## Data
 
-To perform our analysis, we used data from an fMRI study of the aging brain in acute ketosis, which was found from openneuro.org, an open-source platform with public datasets containing neuroimaging data. The study involved scanning participants in a fasted state before and after they were administered insulin or glucose bolus based on body weight. Our data consists of 101 participants, aged 21-79, with the variables, participant_id, age, sex, BMI, bodyweight, fasting insulin, HbA1C, and HOMA.  
+To perform our analysis, we used data from an fMRI study of the aging brain in acute ketosis, which was found from openneuro.org, an open-source platform with public datasets containing neuroimaging data. The study involved scanning participants in a fasted state before and after they were administered insulin or glucose bolus based on body weight. Our data consists of 101 participants, aged 21-79, with the variables, participant_id, age, sex, BMI, bodyweight, fasting insulin (administered before or after), HbA1C, and HOMA.  
 
 ## Data Cleaning
 
