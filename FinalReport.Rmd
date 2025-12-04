@@ -22,33 +22,15 @@ To answer our question, we plan to use the data from an fMRI study of the aging 
 
 ##Data Processing and Cleaning
 
-Import required Libraries through the requirements.R file and import uncleaned data.
-```{r include=FALSE}
-source("00_requirements.R")
-uncleanData <- read_tsv("participants.tsv")
-```
 
-Changes column names to a more uniform syntaxing for easier reference and removes unused varaiables from the dataset.
 
-```{r}
-
-cleanData <- uncleanData[,!names(uncleanData) %in% c("HbA1c", "sex", "bodyweight")]
-names(cleanData)[names(cleanData) == "fasting insulin"] <- "Fasting Insulin"
-names(cleanData)[names(cleanData) == "age"] <- "Age"
-names(cleanData)[names(cleanData) == "participant_id"] <- "Participant_ID"
-
-print(cleanData)
-```
 
 
 ## Data
 
 To perform our analysis, we used data from an fMRI study of the aging brain in acute ketosis, which was found from openneuro.org, an open-source platform with public datasets containing neuroimaging data. The study involved scanning participants in a fasted state before and after they were administered insulin or glucose bolus based on body weight. Our data consists of 101 participants, aged 21-79, with the variables, participant_id, age, sex, BMI, bodyweight, fasting insulin, HbA1C, and HOMA. To clean the data, we removed the variables irrelevant to our analysis (sex, bodyweight, and HbA1C). 
 
-```{r}
-source("00_requirements.r")
-source("DataProcessing_Cleaning.R")
-```
+
 
 <<<<<<< HEAD
 =======
@@ -69,12 +51,8 @@ Hypothesis1: "if age is older then HOMA will be increase"
 
 Create scatter plot to visualize the age relate to HOMA.
 
-
-```{r}
-plot(x = cleanData$Age , y = cleanData$HOMA , xlab = "age", ylab = "HOMA", main = "Graph of Age and HOMA", sub = "how age is related to HOMA")
-
-abline(h = 2.5, col = "red")
-
+```{r, echo=FALSE}
+inclu
 ```
 
 

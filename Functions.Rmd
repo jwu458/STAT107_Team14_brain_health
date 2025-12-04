@@ -23,6 +23,8 @@ names(cleanData)[names(cleanData) == "fasting insulin"] <- "Fasting Insulin"
 names(cleanData)[names(cleanData) == "age"] <- "Age"
 names(cleanData)[names(cleanData) == "participant_id"] <- "Participant_ID"
 
+na.omit(cleanData)
+
 print(cleanData)
 ```
 
@@ -39,3 +41,14 @@ plot(x = cleanData$Age , y = cleanData$HOMA , xlab = "age", ylab = "HOMA", main 
 abline(h = 2.5, col = "red")
 
 ```
+
+Correlation testing
+```{r}
+HOMA_vals <- c(cleanData$HOMA)
+na.omit(HOMA_vals)
+BMI_vals <- c(cleanData$BMI)
+
+print(HOMA_vals)
+cor.test(HOMA_vals, BMI_vals)
+```
+
