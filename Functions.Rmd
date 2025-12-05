@@ -23,8 +23,7 @@ names(cleanData)[names(cleanData) == "fasting insulin"] <- "Fasting Insulin"
 names(cleanData)[names(cleanData) == "age"] <- "Age"
 names(cleanData)[names(cleanData) == "participant_id"] <- "Participant_ID"
 
-cleanData$HOMA <- as.double(cleanData$HOMA)
-cleanData <- na.omit(cleanData)
+na.omit(cleanData)
 
 print(cleanData)
 ```
@@ -75,6 +74,6 @@ cor.test(fast_insulin_vals, BMI_vals)
 ```
 
 ```{r}
-cor.test(age_vals, BMI_vals)
+cor.test(age_vals, bmi)
 ```
 
