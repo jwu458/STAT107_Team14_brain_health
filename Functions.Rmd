@@ -42,6 +42,15 @@ abline(h = 2.5, col = "red")
 
 ```
 
+```{r}
+plot(x = cleanData$BMI , y = cleanData$HOMA, xlab = "BMI", ylab = "HOMA", main = "Graph of HOMA and BMI", sub = "How BMI is affecting HOMA")
+
+abline(h = 2.5, col = "red")
+
+```
+
+
+
 Correlation testing
 ```{r}
 HOMA_vals <- c(cleanData$HOMA)

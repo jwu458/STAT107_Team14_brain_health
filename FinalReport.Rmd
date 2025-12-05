@@ -6,6 +6,8 @@ date: "2025-10-24"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+    install.packages("imager") # Only if not already installed
+    library(imager)
 ```
 
 ## Abstract
@@ -37,7 +39,9 @@ Hypothesis1: "if age is older then HOMA will be increase"
 Create scatter plot to visualize the age relate to HOMA.
 
 ```{r, echo=FALSE}
-inclu
+    image_path <- "Screenshot 2025-12-05 091313.png"
+    img <- load.image(image_path)
+    plot(img)
 ```
 
 
@@ -50,10 +54,10 @@ Hypothesis2: if BMI is  higher, does HOMA increases as well.
 Create the scatter plot displays BMI with HOMA.
 
 ```{r}
-plot(x = cleanData$BMI , y = cleanData$HOMA, xlab = "BMI", ylab = "HOMA", main = "Graph of HOMA and BMI", sub = "How BMI is affecting HOMA")
 
-abline(h = 2.5, col = "red")
-
+image_path <- "Screenshot 2025-12-05 093214.png"
+    img <- load.image(image_path)
+    plot(img)
 ```
 
 
