@@ -39,7 +39,7 @@ Hypothesis1: "if age is older then HOMA will be increase"
 Create scatter plot to visualize the age relate to HOMA.
 
 ```{r, echo=FALSE}
-    image_path <- "Screenshot 2025-12-05 091313.png"
+    image_path <- "age_vs_homa.png"
     img <- load.image(image_path)
     plot(img)
 ```
@@ -53,9 +53,9 @@ Hypothesis2: if BMI is  higher, does HOMA increases as well.
 
 Create the scatter plot displays BMI with HOMA.
 
-```{r}
+```{r, echo=FALSE}
 
-image_path <- "Screenshot 2025-12-05 093214.png"
+image_path <- "bmi_vs_homa.png"
     img <- load.image(image_path)
     plot(img)
 ```
