@@ -74,6 +74,41 @@ cor.test(fast_insulin_vals, BMI_vals)
 ```
 
 ```{r}
-cor.test(age_vals, bmi)
+cor.test(age_vals, BMI_vals)
+```
+
+```{r}
+plot(age, homa)
+
+plot(cleanData$Age, cleanData$BMI)
+
+abline(h = 25, col = 'red')
+
+plot(bmi, homa)
+
+plot(fasting insulin, homa)
+
+
+```
+
+```{r}
+plot(cleanData$Age, cleanData$HOMA)
+cor.test(age_vals, HOMA_vals)
+```
+```{r}
+plot(cleanData$Age, cleanData$BMI)
+cor.test(age_vals, BMI_vals)
+```
+
+```{r}
+plot(cleanData$BMI, cleanData$HOMA)
+segments(x0 = 25, y0 = 0, x1 = 25, y1 = 2.5, col = 'red')
+segments(x0 = 0, y0 = 2.5, x1 = 25, y1 = 2.5, col = 'red')
+cor.test(BMI_vals, HOMA_vals)
+```
+
+```{r}
+plot(cleanData$`Fasting Insulin`, cleanData$HOMA)
+cor.test(fast_insulin_vals, HOMA_vals)
 ```
 

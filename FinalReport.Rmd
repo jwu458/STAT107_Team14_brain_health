@@ -74,6 +74,34 @@ according to data we have and visualized scatter plot graph, we could observe ag
 
 ## Analysis
 
+Age and HOMA plot (p-val = 0.7141, cor = 0.03728332)
+```{r, echo=FALSE}
+image_path <- "plot_age_homa.png"
+    img <- load.image(image_path)
+    plot(img)
+```
+
+Age and BMI plot (p-val = 3.75e-05, cor = .401814)
+```{r, echo=FALSE}
+image_path <- "plot_age_bmi.png"
+    img <- load.image(image_path)
+    plot(img)
+```
+
+BMI and HOMA plot (p-val = 5.156e-05, cor = 0.3952093)
+```{r, echo=FALSE}
+image_path <- "plot_bmi_homa.png"
+    img <- load.image(image_path)
+    plot(img)
+```
+
+Fasting Insulin and HOMA (p-val = 2.2e-16, .9870984)
+```{r, echo=FALSE}
+image_path <- "plot_insulin_homa.png"
+    img <- load.image(image_path)
+    plot(img)
+```
+
 We performed correlation testing on our relevant variables such as age vs. HOMA, HOMA vs BMI, and fasting insulin levels vs. BMI. The test between age and HOMA proved to be not significant as the p-value = 0.7141 indicating that there was no true correlation between the two. 
 ```{r, echo=FALSE}
 image_path <- "correlation_age_homa.png"
@@ -83,11 +111,8 @@ image_path <- "correlation_age_homa.png"
 
 However fasting insulin vs BMI and HOMA vs BMI had p-values less than 0.5 indicating that there was a correlation between the two. HOMA and BMI had a correlation of 0.3952 indicating a weak correlation but it still did exist. 
 
-<<<<<<< HEAD
-```{r, echo=FALSE}
-=======
+
 ```{r, echo = FALSE}
->>>>>>> 063d9a1ab04a76e0f5fde191c7581662192b00d9
 image_path <- "correlation_homa_bmi.png"
     img <- load.image(image_path)
     plot(img)
@@ -95,15 +120,15 @@ image_path <- "correlation_homa_bmi.png"
 
 Fasting insulin and BMI had a correlation of 0.4109 indicating a moderate correlation between the two. 
 
-<<<<<<< HEAD
-```{r, echo=FALSE}
-=======
+
 ```{r, echo = FALSE}
->>>>>>> 063d9a1ab04a76e0f5fde191c7581662192b00d9
+
 image_path <- "correlation_fasting_insulin_bmi.png"
     img <- load.image(image_path)
     plot(img)
 ```
+
+Age and BMI had a statistically significant correlation as well with a value of .4018 indicating another moderate correlation.
 
 
 ## Conclusions
