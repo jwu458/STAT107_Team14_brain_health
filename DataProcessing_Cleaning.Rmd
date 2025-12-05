@@ -20,8 +20,9 @@ names(cleanData)[names(cleanData) == "fasting insulin"] <- "Fasting Insulin"
 names(cleanData)[names(cleanData) == "age"] <- "Age"
 names(cleanData)[names(cleanData) == "participant_id"] <- "Participant_ID"
 
+
+cleanData$HOMA <- as.double(cleanData$HOMA)
 cleanData <- na.omit(cleanData)
-cleanData$HOMA <- as.integer(cleanData$HOMA)
 
 print(cleanData)
 ```
