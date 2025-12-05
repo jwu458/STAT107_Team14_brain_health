@@ -26,7 +26,7 @@ To perform our analysis, we used data from an fMRI study of the aging brain in a
 
 ## Data Cleaning
 
-To clean the data, we removed the variables irrelevant to our analysis (sex, bodyweight, and HbA1C). We also capitalized the remaining variable names to a more uniform syntax for easier reference. Now, we are ready to analyze a cleaned data set with the variables, Participant_ID, Age, BMI, HOMA, and Fasting Insulin.
+To clean the data, variables irrelevant to our analysis like sex, bodyweight, and HbA1C were first removed before capitalizing the variable names to a more uniform syntax for easier reference. The data types for the remaining variables were converted for compatibility with Age, BMI, Fasting Insulin, and HOMA being numeric variables and Participant_ID being a categorical variable. We also removed observations that had missing values, leaving us with a filtered data set of 99 observations containing data for Participant_ID, Age, BMI, Fasting Insulin, and HOMA.
 
 ## Visualizations
 
