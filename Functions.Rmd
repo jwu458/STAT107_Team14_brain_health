@@ -49,6 +49,18 @@ abline(h = 2.5, col = "red")
 
 ```
 
+```{r}
+# Identify outliers using boxplot
+outliers <- boxplot(cleanData$HOMA, plot = FALSE)$out
+
+print(outliers)
+
+# Create a new dataset excluding outliers
+#data_cleaned_boxplot <- data[!data %in% outliers]
+
+#print(data_cleaned_boxplot)
+plot(cleanData$Age, cleanData$HOMA)
+```
 
 
 Correlation testing
