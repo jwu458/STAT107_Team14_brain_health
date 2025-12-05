@@ -45,7 +45,8 @@ abline(h = 2.5, col = "red")
 ```{r}
 plot(x = cleanData$BMI , y = cleanData$HOMA, xlab = "BMI", ylab = "HOMA", main = "Graph of HOMA and BMI", sub = "How BMI is affecting HOMA")
 
-abline(h = 2.5, col = "red")
+segments(x0 = 25, y0 = 0, y1 = 2.5, x1 = 25, col = 'red')
+segments(x0 = 0, y0 = 2.5, x1 = 25, y1 = 2.5, col = 'red')
 
 ```
 
@@ -70,5 +71,9 @@ cor.test(age_vals, HOMA_vals)
 fast_insulin_vals <- c(cleanData$`Fasting Insulin`)
 
 cor.test(fast_insulin_vals, BMI_vals)
+```
+
+```{r}
+cor.test(age_vals, BMI_vals)
 ```
 

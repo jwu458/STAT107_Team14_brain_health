@@ -85,7 +85,7 @@ image_path <- "correlation_age_homa.png"
 
 However fasting insulin vs BMI and HOMA vs BMI had p-values less than 0.5 indicating that there was a correlation between the two. HOMA and BMI had a correlation of 0.3952 indicating a weak correlation but it still did exist. 
 
-```{r}
+```{r, echo=FALSE}
 image_path <- "correlation_homa_bmi.png"
     img <- load.image(image_path)
     plot(img)
@@ -93,7 +93,7 @@ image_path <- "correlation_homa_bmi.png"
 
 Fasting insulin and BMI had a correlation of 0.4109 indicating a moderate correlation between the two. 
 
-```{r}
+```{r, echo=FALSE}
 image_path <- "correlation_fasting_insulin_bmi.png"
     img <- load.image(image_path)
     plot(img)
