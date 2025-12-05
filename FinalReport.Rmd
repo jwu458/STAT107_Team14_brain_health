@@ -76,6 +76,8 @@ according to data we have and visualized scatter plot graph, we could observe ag
 
 [tables w/ p-values and other relevant values go here; cor.test() on the variables?]
 
+We performed correlation testing on our relevant variables such as age vs. HOMA, HOMA vs BMI, and fasting insulin levels vs. BMI. The test between age and HOMA proved to be not significant as the p-value = 0.7141 indicating that there was no true correlation between the two. However fasting insulin vs BMI and HOMA vs BMI had p-values less than 0.5 indicating that there was a correlation between the two. HOMA and BMI had a correlation of 0.3952 indicating a weak correlation but it still did exist. Fasting insulin and BMI had a correlation of 0.4109 indicating a moderate correlation between the two. 
+
 ## Conclusions
 
 Overall, age did not really matter to HOMA, while BMI was affecting HOMA. Since we mentioned about how high HOMA equates to bad glucose fuel and higher insulin resistance, and how brain activity is dependent on glucose that is the main fuel source. The higher BMI is, the higher HOMA will be, which prevents the brain from aging faster. At the same time, if an individual has a normal or lower BMI, it can give better insulin sensitivity that can lead to a healthier brain. Insulin works well with healthy BMI; the brain gets steady fuel supply. With that, we are able to answer our prompt: "Can keeping a healthy weight and lower insulin resistance help prevent brain aging?". Based on our data and analyses, we can conclude that keeping a healthy weight most likely results in a healthy BMI that supports lower insulin resistance which can help prevent brain aging.
