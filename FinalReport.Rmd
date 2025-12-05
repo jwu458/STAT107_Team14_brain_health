@@ -76,7 +76,29 @@ according to data we have and visualized scatter plot graph, we could observe ag
 
 [tables w/ p-values and other relevant values go here; cor.test() on the variables?]
 
-We performed correlation testing on our relevant variables such as age vs. HOMA, HOMA vs BMI, and fasting insulin levels vs. BMI. The test between age and HOMA proved to be not significant as the p-value = 0.7141 indicating that there was no true correlation between the two. However fasting insulin vs BMI and HOMA vs BMI had p-values less than 0.5 indicating that there was a correlation between the two. HOMA and BMI had a correlation of 0.3952 indicating a weak correlation but it still did exist. Fasting insulin and BMI had a correlation of 0.4109 indicating a moderate correlation between the two. 
+We performed correlation testing on our relevant variables such as age vs. HOMA, HOMA vs BMI, and fasting insulin levels vs. BMI. The test between age and HOMA proved to be not significant as the p-value = 0.7141 indicating that there was no true correlation between the two. 
+```{r, echo=FALSE}
+image_path <- "correlation_age_homa.png"
+    img <- load.image(image_path)
+    plot(img)
+```
+
+However fasting insulin vs BMI and HOMA vs BMI had p-values less than 0.5 indicating that there was a correlation between the two. HOMA and BMI had a correlation of 0.3952 indicating a weak correlation but it still did exist. 
+
+```{r}
+image_path <- "correlation_homa_bmi.png"
+    img <- load.image(image_path)
+    plot(img)
+```
+
+Fasting insulin and BMI had a correlation of 0.4109 indicating a moderate correlation between the two. 
+
+```{r}
+image_path <- "correlation_fasting_insulin_bmi.png"
+    img <- load.image(image_path)
+    plot(img)
+```
+
 
 ## Conclusions
 
