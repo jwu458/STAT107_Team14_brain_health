@@ -1,11 +1,17 @@
 ---
 title: "Aging Brain and Insulin Resistance"
 output: pdf_document
-date: "2025-10-24"
+date: "2025-12-5"
 ---
 
 ```{r setup, include=FALSE}
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+knitr::opts_chunk$set(fig.align = "center")
+```
+
+```{r include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
 ```
 
 ```{r include=FALSE}
@@ -13,7 +19,7 @@ source("00_requirements.R")
 uncleanData <- read_tsv("participants.tsv")
 ```
 
-```{r}
+```{r echo=FALSE, include=FALSE}
 cleanData <- uncleanData[,!names(uncleanData) %in% c("HbA1c", "sex", "bodyweight")]
 names(cleanData)[names(cleanData) == "fasting insulin"] <- "Fasting Insulin"
 names(cleanData)[names(cleanData) == "age"] <- "Age"
@@ -23,6 +29,15 @@ cleanData$HOMA <- as.double(cleanData$HOMA)
 cleanData <- na.omit(cleanData)
 
 print(cleanData)
+
+```
+
+```{r echo=FALSE, include=FALSE}
+HOMA_vals <- c(cleanData$HOMA)
+na.omit(HOMA_vals)
+BMI_vals <- c(cleanData$BMI)
+age_vals <- c(cleanData$Age)
+fast_insulin_vals <- c(cleanData$`Fasting Insulin`)
 ```
 ## Abstract
 
@@ -34,7 +49,7 @@ As we continue to age and develop, our brain does too. According to the National
 
 Our analysis may benefit anyone who is concerned about their aging brain and want to keep their brains young and healthy for longer than average. It would be especially beneficial for older and elderly adults since they have a higher risk of developing neurodegenerative diseases like Alzheimer's and Parkinson's disease, which can accelerate brain aging. Looking at body weight index (BMI) and HOMA-IR (Homeostatic Model Assessment for Insulin Resistance) scores would help us understand how diet is related to brain aging in different age groups. Analyzing these variables could help people realize what they should change in their diet by adding or subtracting certain foods in their meals. This would be a step in keeping the brain and body healthy as both are interlinked.
 
-To answer our question, we used the data from an fMRI study of the aging brain in acute ketosis. We created scatterplots and ran correlation tests from the data to analyze the relationships between age vs HOMA, age vs BMI, BMI vs HOMA, and fasting insulin vs HOMA. 
+To answer our question, we plan to use the data from an fMRI study of the aging brain in acute ketosis. We plan to create scatterplots from the data to analyze the relationships between BMI vs HOMA and age vs HOMA. 
 
 ## Data
 
@@ -51,44 +66,32 @@ HOMA is a score combining glucose + insulin. when HOMA is high that means bad gl
 Hypothesis1: "if age is older then HOMA will be increase"
 
 Create scatter plot to visualize the age relate to HOMA.
-
-```{r}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 plot(cleanData$Age, cleanData$HOMA, xlab = "Age", ylab = "HOMA", main = "Age vs HOMA", sub = "Figure 1: How age is related to HOMA")
 abline(h = 2.5, col = 'red')
-
-cor.test(age_vals, HOMA_vals)
 ```
-
-
 According to scatter plot of age and HOMA, we can observe HOMA is not really affected by age. With cor.test we could observe it is 0.037 which clearly proves that age is not really related to HOMA.
 Red line indicates high HOMA which means faster aging, yet data shows HOMA is not really related to age.
-
 
 Hypothesis2: if BMI is  higher, does HOMA increases as well.
 
 Create the scatter plot displays BMI with HOMA.
-```{r}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 plot(cleanData$BMI, cleanData$HOMA, xlab = "BMI", ylab = "HOMA", main = "HOMA vs BMI", sub = "Figure 3: How BMI is related to HOMA")
 segments(x0 = 25, y0 = 0, x1 = 25, y1 = 2.5, col = 'red')
 segments(x0 = 0, y0 = 2.5, x1 = 25, y1 = 2.5, col = 'red')
-cor.test(BMI_vals,HOMA_vals)
-
 ```
 
-The visualization shows that all data points with BMI below 25 fall under the HOMA value of 2.5. As BMI increases beyond 25, several points appear above the 2.5 line.
+In the visualization, when BMI is in the normal range (< 25), there are no data points with HOMA values exceeding 2.5. As BMI increases beyond 25, which represents the overweight and obese range, several points appear above the HOMA threshold of 2.5. This visual pattern indicates a possible relationship between higher BMI values and increased HOMA levels.
 
 high HOMA which can be high insulin resistance = glucose fuel less efficiently
 - brain's activity is depends on glucose, its main fuel source.
 - less efficient it is, there is high possibility that brain can aging faster.
 
-Expected outcomes for age & HOMA, we are expecting older the age = higher the HOMA for hypothesis 1, and 
-for BMI & HOMA, we are expecting higher the BMI = higher the HOMA
-according to data we have and visualized scatter plot graph, we could observe age is not really related to HOMA, yet BMI is relevant to HOMA. As BMI increases, HOMA increases as well.
-
 ## Analysis
 
 Age and HOMA plot (p-val = 0.7141, cor = 0.03728332)
-```{r}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 plot(cleanData$Age, cleanData$HOMA, xlab = "Age", ylab = "HOMA", main = "Age vs HOMA", sub = "Figure 1: How age is related to HOMA")
 abline(h = 2.5, col = 'red')
 
@@ -96,7 +99,7 @@ cor.test(age_vals, HOMA_vals)
 ```
 
 Age and BMI plot 
-```{r}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 plot(cleanData$Age, cleanData$BMI, xlab = "Age", ylab = "BMI", main = "BMI vs Age", sub = "Figure 2: How age is related to BMI")
 abline(h = 25, col = 'red')
 
@@ -104,15 +107,15 @@ cor.test(age_vals, BMI_vals)
 ```
 
 BMI and HOMA plot 
-```{r}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 plot(cleanData$BMI, cleanData$HOMA, xlab = "BMI", ylab = "HOMA", main = "HOMA vs BMI", sub = "Figure 3: How BMI is related to HOMA")
 segments(x0 = 25, y0 = 0, x1 = 25, y1 = 2.5, col = 'red')
 segments(x0 = 0, y0 = 2.5, x1 = 25, y1 = 2.5, col = 'red')
 
 ```
 
-Fasting Insulin and HOMA (p-val = 2.2e-16, .9870984)
-```{r}
+Fasting Insulin and HOMA 
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 plot(cleanData$`Fasting Insulin`, cleanData$HOMA, xlab = "Fasting Insulin", ylab = "HOMA", sub = "Figure 4: How fasting insulin is related to HOMA")
 cleanData$`Fasting Insulin` <- as.numeric(cleanData$`Fasting Insulin`)
 cleanData$HOMA <- as.numeric(cleanData$HOMA)
@@ -128,7 +131,6 @@ Based on the Age vs BMI plot, BMI values appear to increase after age 50, with a
 From the plot, we observe that when BMI is in the normal range (< 25), there are no HOMA values greater than 2.5. Once BMI exceeds 25, which falls into the overweight or obese range, some data points show HOMA values above 2.5. This observation suggests a possible association between higher BMI and increased insulin resistance.
 
 For the fasting insulin and HOMA data, the scatter plot shows a strong positive linear pattern. The diagonal regression line closely follows the data points, indicating that as fasting insulin increases, HOMA values also increase in a nearly linear manner. Most observations lie close to the fitted line, suggesting a strong association between fasting insulin and HOMA, with relatively little dispersion at lower insulin levels. Additionally, the correlation coefficient is 0.987, which is very close to 1, indicating an extremely strong positive linear relationship between the two variables.
-
 
 ## Conclusions
 
