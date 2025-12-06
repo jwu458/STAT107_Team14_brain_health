@@ -6,13 +6,27 @@ date: "2025-10-24"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-    install.packages("imager") # Only if not already installed
-    library(imager)
 ```
 
+```{r include=FALSE}
+source("00_requirements.R")
+uncleanData <- read_tsv("participants.tsv")
+```
+
+```{r}
+cleanData <- uncleanData[,!names(uncleanData) %in% c("HbA1c", "sex", "bodyweight")]
+names(cleanData)[names(cleanData) == "fasting insulin"] <- "Fasting Insulin"
+names(cleanData)[names(cleanData) == "age"] <- "Age"
+names(cleanData)[names(cleanData) == "participant_id"] <- "Participant_ID"
+
+cleanData$HOMA <- as.double(cleanData$HOMA)
+cleanData <- na.omit(cleanData)
+
+print(cleanData)
+```
 ## Abstract
 
-Brain aging is a natural process that is linked to reduced cognitive abilities, brain volume and neurochemical activity. There are many ways to slow this process down, one of them being diet. The question we seek to answer is "Can keeping a healthy weight and lower insulin resistance help prevent brain aging?". To answer this question, we conducted an analysis on data from an fMRI study of the aging brain on acute ketosis, using scatterplots and correlation tests to see the relationships between age vs HOMA, age vs BMI, BMI vs HOMA, and fasting insulin vs HOMA.
+Brain aging is a natural process that is linked to reduced cognitive abilities, brain volume and neurochemical activity. There are many ways to slow this process down, one of them being diet. The question we seek to answer is "Can keeping a healthy BMI and lower insulin resistance/HOMA help prevent brain aging?". To answer this question, we conducted an analysis on data from an fMRI study of the aging brain on acute ketosis, using scatterplots and correlation tests to see the relationships between age vs HOMA, age vs BMI, BMI vs HOMA, and fasting insulin vs HOMA.
 
 ## Introduction
 
@@ -38,31 +52,30 @@ Hypothesis1: "if age is older then HOMA will be increase"
 
 Create scatter plot to visualize the age relate to HOMA.
 
-```{r, echo=FALSE}
-    image_path <- "age_vs_homa.png"
-    img <- load.image(image_path)
-    plot(img)
+```{r}
+plot(cleanData$Age, cleanData$HOMA, xlab = "Age", ylab = "HOMA", main = "Age vs HOMA", sub = "Figure 1: How age is related to HOMA")
+abline(h = 2.5, col = 'red')
+
+cor.test(age_vals, HOMA_vals)
 ```
 
 
-According to scatter plot of age and HOMA, we can observe HOMA is not really affected by age.
+According to scatter plot of age and HOMA, we can observe HOMA is not really affected by age. With cor.test we could observe it is 0.037 which clearly proves that age is not really related to HOMA.
 Red line indicates high HOMA which means faster aging, yet data shows HOMA is not really related to age.
 
 
 Hypothesis2: if BMI is  higher, does HOMA increases as well.
 
 Create the scatter plot displays BMI with HOMA.
+```{r}
+plot(cleanData$BMI, cleanData$HOMA, xlab = "BMI", ylab = "HOMA", main = "HOMA vs BMI", sub = "Figure 3: How BMI is related to HOMA")
+segments(x0 = 25, y0 = 0, x1 = 25, y1 = 2.5, col = 'red')
+segments(x0 = 0, y0 = 2.5, x1 = 25, y1 = 2.5, col = 'red')
+cor.test(BMI_vals,HOMA_vals)
 
-```{r, echo=FALSE}
-
-image_path <- "bmi_vs_homa.png"
-    img <- load.image(image_path)
-    plot(img)
 ```
 
-
-Shows higher the BMI, HOMA tends to increase as well.
-Red line indicates high HOMA. According to scatter plot, as BMI increases, HOMA increases as well.
+The visualization shows that all data points with BMI below 25 fall under the HOMA value of 2.5. As BMI increases beyond 25, several points appear above the 2.5 line.
 
 high HOMA which can be high insulin resistance = glucose fuel less efficiently
 - brain's activity is depends on glucose, its main fuel source.
@@ -75,45 +88,57 @@ according to data we have and visualized scatter plot graph, we could observe ag
 ## Analysis
 
 Age and HOMA plot (p-val = 0.7141, cor = 0.03728332)
-```{r, echo=FALSE}
-image_path <- "plot_age_homa.png"
-    img <- load.image(image_path)
-    plot(img)
+```{r}
+plot(cleanData$Age, cleanData$HOMA, xlab = "Age", ylab = "HOMA", main = "Age vs HOMA", sub = "Figure 1: How age is related to HOMA")
+abline(h = 2.5, col = 'red')
+
+cor.test(age_vals, HOMA_vals)
 ```
 
-Age and BMI plot (p-val = 3.75e-05, cor = .401814)
-```{r, echo=FALSE}
-image_path <- "plot_age_bmi.png"
-    img <- load.image(image_path)
-    plot(img)
+Age and BMI plot 
+```{r}
+plot(cleanData$Age, cleanData$BMI, xlab = "Age", ylab = "BMI", main = "BMI vs Age", sub = "Figure 2: How age is related to BMI")
+abline(h = 25, col = 'red')
+
+cor.test(age_vals, BMI_vals)
 ```
 
-BMI and HOMA plot (p-val = 5.156e-05, cor = 0.3952093)
-```{r, echo=FALSE}
-image_path <- "plot_bmi_homa.png"
-    img <- load.image(image_path)
-    plot(img)
+BMI and HOMA plot 
+```{r}
+plot(cleanData$BMI, cleanData$HOMA, xlab = "BMI", ylab = "HOMA", main = "HOMA vs BMI", sub = "Figure 3: How BMI is related to HOMA")
+segments(x0 = 25, y0 = 0, x1 = 25, y1 = 2.5, col = 'red')
+segments(x0 = 0, y0 = 2.5, x1 = 25, y1 = 2.5, col = 'red')
+
 ```
 
 Fasting Insulin and HOMA (p-val = 2.2e-16, .9870984)
-```{r, echo=FALSE}
-image_path <- "plot_insulin_homa.png"
-    img <- load.image(image_path)
-    plot(img)
+```{r}
+plot(cleanData$`Fasting Insulin`, cleanData$HOMA, xlab = "Fasting Insulin", ylab = "HOMA", sub = "Figure 4: How fasting insulin is related to HOMA")
+cleanData$`Fasting Insulin` <- as.numeric(cleanData$`Fasting Insulin`)
+cleanData$HOMA <- as.numeric(cleanData$HOMA)
+model <- lm(HOMA ~ `Fasting Insulin`, data = cleanData)
+abline(model, col = "red", lwd = 2)
+cor.test(fast_insulin_vals, HOMA_vals)
 ```
 
-We performed correlation testing on our relevant variables such as age vs. HOMA, HOMA vs BMI, and fasting insulin levels vs. BMI. The test between age and HOMA proved to be not significant as the p-value = 0.7141 indicating that there was no true correlation between the two. 
+We performed correlation testing on our relevant variables such as age vs. HOMA, age VS BMI, HOMA vs BMI, and fasting insulin levels vs. BMI. The test between age and HOMA proved to be not significant as the cor = 0.037 indicating that there was no true correlation between the two. 
 
-However fasting insulin vs BMI and HOMA vs BMI had p-values less than 0.5 indicating that there was a correlation between the two. HOMA and BMI had a correlation of 0.3952 indicating a weak correlation but it still did exist. 
+Based on the Age vs BMI plot, BMI values appear to increase after age 50, with a higher proportion of participants classified as overweight or obese. While this does not prove causation, it suggests a possible association between age and BMI.
 
-Fasting insulin and BMI had a correlation of 0.4109 indicating a moderate correlation between the two. 
+From the plot, we observe that when BMI is in the normal range (< 25), there are no HOMA values greater than 2.5. Once BMI exceeds 25, which falls into the overweight or obese range, some data points show HOMA values above 2.5. This observation suggests a possible association between higher BMI and increased insulin resistance.
 
-Age and BMI had a statistically significant correlation as well with a value of .4018 indicating another moderate correlation.
+For the fasting insulin and HOMA data, the scatter plot shows a strong positive linear pattern. The diagonal regression line closely follows the data points, indicating that as fasting insulin increases, HOMA values also increase in a nearly linear manner. Most observations lie close to the fitted line, suggesting a strong association between fasting insulin and HOMA, with relatively little dispersion at lower insulin levels. Additionally, the correlation coefficient is 0.987, which is very close to 1, indicating an extremely strong positive linear relationship between the two variables.
 
 
 ## Conclusions
 
-Overall, age did not really matter to HOMA, while BMI was affecting HOMA. Since we mentioned about how high HOMA equates to bad glucose fuel and higher insulin resistance, and how brain activity is dependent on glucose that is the main fuel source. The higher BMI is, the higher HOMA will be, which prevents the brain from aging faster. At the same time, if an individual has a normal or lower BMI, it can give better insulin sensitivity that can lead to a healthier brain. Insulin works well with healthy BMI; the brain gets steady fuel supply. With that, we are able to answer our prompt: "Can keeping a healthy weight and lower insulin resistance help prevent brain aging?". Based on our data and analyses, we can conclude that keeping a healthy weight most likely results in a healthy BMI that supports lower insulin resistance which can help prevent brain aging.
+Overall, our results indicate that age alone does not show a meaningful relationship with HOMA, as the correlation between age and HOMA was near zero. However, age appears to be associated with BMI, particularly after age 50, where a larger proportion of participants fall into the overweight or obese category. In turn, BMI shows a clearer relationship with HOMA values. Specifically, when BMI is within the normal range (< 25), HOMA values remain below 2.5, whereas once BMI exceeds 25, several observations show elevated HOMA levels.
+
+Since higher HOMA values reflect increased insulin resistance and poorer glucose regulation, these patterns suggest that BMI may play an indirect role in insulin resistance. Given that glucose is the primary energy source for the brain, impaired insulin sensitivity could affect how consistently the brain receives metabolic fuel. The visualization shows that individuals with lower or normal BMI tend to have healthier HOMA values, which may correspond to better insulin sensitivity and metabolic stability.
+
+Furthermore, the very strong linear relationship observed between fasting insulin and HOMA (cor = 0.987) supports the idea that insulin regulation is a key factor underlying healthy HOMA levels. Maintaining lower fasting insulin levels is strongly associated with healthier HOMA values in our data, reinforcing the importance of metabolic regulation.
+
+Taken together, while our analysis cannot establish causation or directly measure brain aging, the observed associations support the hypothesis that maintaining a healthy BMI and lower insulin resistance may contribute to metabolic conditions that are favorable for brain health. Based on our data and analyses, keeping fasting insulin levels low and HOMA values within a healthy range appears to be associated with reduced metabolic risk, which may help support healthy aging.
 
 ## Member Contribution
 
