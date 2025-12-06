@@ -6,6 +6,7 @@ date: "2025-10-24"
 
 ```{r setup, include=FALSE}
 options(repos = c(CRAN = "https://cloud.r-project.org"))
+knitr::opts_chunk$set(fig.align = "center")
 ```
 ```{r}
 knitr::opts_chunk$set(echo = TRUE)
