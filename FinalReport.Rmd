@@ -5,8 +5,10 @@ date: "2025-10-24"
 ---
 
 ```{r setup, include=FALSE}
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+```
+```{r}
 knitr::opts_chunk$set(echo = TRUE)
-    install.packages("imager") # Only if not already installed
     library(imager)
 ```
 
@@ -38,7 +40,11 @@ Hypothesis1: "if age is older then HOMA will be increase"
 
 Age and HOMA plot (p-val = 0.7141, cor = 0.03728332) 
 ```{r, echo=FALSE}
+<<<<<<< Updated upstream
 image_path <- "plot_age_homa.png" 
+=======
+    image_path <- "plot_age_homa.png"
+>>>>>>> Stashed changes
     img <- load.image(image_path)
     plot(img)
 ```
@@ -50,6 +56,39 @@ Red line indicates high HOMA which means faster aging, yet data shows HOMA is no
 
 Hypothesis2: if BMI is  higher, does HOMA increases as well.
 
+<<<<<<< Updated upstream
+=======
+Create the scatter plot displays BMI with HOMA.
+
+```{r, echo=FALSE}
+
+image_path <- "plot_bmi_homa.png"
+    img <- load.image(image_path)
+    plot(img)
+```
+
+
+Shows higher the BMI, HOMA tends to increase as well.
+Red line indicates high HOMA. According to scatter plot, as BMI increases, HOMA increases as well.
+
+high HOMA which can be high insulin resistance = glucose fuel less efficiently
+- brain's activity is depends on glucose, its main fuel source.
+- less efficient it is, there is high possibility that brain can aging faster.
+
+Expected outcomes for age & HOMA, we are expecting older the age = higher the HOMA for hypothesis 1, and 
+for BMI & HOMA, we are expecting higher the BMI = higher the HOMA
+according to data we have and visualized scatter plot graph, we could observe age is not really related to HOMA, yet BMI is relevant to HOMA. As BMI increases, HOMA increases as well.
+
+## Analysis
+
+Age and HOMA plot (p-val = 0.7141, cor = 0.03728332)
+```{r, echo=FALSE}
+image_path <- "plot_age_homa.png"
+    img <- load.image(image_path)
+    plot(img)
+```
+
+>>>>>>> Stashed changes
 Age and BMI plot (p-val = 3.75e-05, cor = .401814)
 ```{r, echo=FALSE}
 image_path <- "plot_age_bmi.png"
@@ -86,9 +125,17 @@ according to data we have and visualized scatter plot graph, we could observe ag
 ## Analysis
 
 We performed correlation testing on our relevant variables such as age vs. HOMA, HOMA vs BMI, and fasting insulin levels vs. BMI. The test between age and HOMA proved to be not significant as the p-value = 0.7141 indicating that there was no true correlation between the two. 
+<<<<<<< Updated upstream
 
 However fasting insulin vs BMI and HOMA vs BMI had p-values less than 0.5 indicating that there was a correlation between the two. HOMA and BMI had a correlation of 0.3952 indicating a weak correlation but it still did exist. 
 
+=======
+
+
+However fasting insulin vs BMI and HOMA vs BMI had p-values less than 0.5 indicating that there was a correlation between the two. HOMA and BMI had a correlation of 0.3952 indicating a weak correlation but it still did exist. 
+
+
+>>>>>>> Stashed changes
 Fasting insulin and BMI had a correlation of 0.4109 indicating a moderate correlation between the two. 
 
 Age and BMI had a statistically significant correlation as well with a value of .4018 indicating another moderate correlation.
