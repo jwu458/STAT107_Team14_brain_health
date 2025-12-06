@@ -19,12 +19,19 @@ Introduction
   - Imports required libraries
 - [DataProcessing_Cleaning.Rmd](https://github.com/jwu458/CS107ProjectGroup14/blob/main/DataProcessing_Cleaning.Rmd)
   - Cleans data and removes unused variables
+- [DataProcessing_Cleaning.R]((https://github.com/jwu458/STAT107_Team14_brain_health/blob/main/DataProcessing_Cleaning.R))
+  - Cleans data and removes unused variables
 - [FinalReport.Rmd](https://github.com/jwu458/CS107ProjectGroup14/blob/main/FinalReport.Rmd)
-  - Final report from project
-- [R_Functions.R](https://github.com/jwu458/CS107ProjectGroup14/blob/main/R_Functions.R)
+  - Final report for the project
+- [FinalReport.pdf](https://github.com/jwu458/STAT107_Team14_brain_health/blob/main/FinalReport.pdf)
+  - Final report for the project in pdf format
+- [Functions.Rmd](https://github.com/jwu458/STAT107_Team14_brain_health/blob/main/Functions.Rmd)
+  - Functions used in final report to visualize and conduct correlation tests.
+- [R_Functions.R](https://github.com/jwu458/STAT107_Team14_brain_health/blob/main/R_Functions.R)
   - Functions used in final report
 - [participants.tsv](https://github.com/jwu458/CS107ProjectGroup14/blob/main/participants.tsv)
   - Dataset
+-Various png files are plots used in the final report.
 
 ## Instructions
 1. Download all files into the same folder
