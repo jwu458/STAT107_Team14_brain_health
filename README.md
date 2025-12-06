@@ -19,7 +19,7 @@ Introduction
   - Imports required libraries
 - [DataProcessing_Cleaning.Rmd](https://github.com/jwu458/CS107ProjectGroup14/blob/main/DataProcessing_Cleaning.Rmd)
   - Cleans data and removes unused variables
-- [DataProcessing_Cleaning.R]((https://github.com/jwu458/STAT107_Team14_brain_health/blob/main/DataProcessing_Cleaning.R))
+- [DataProcessing_Cleaning.R](https://github.com/jwu458/STAT107_Team14_brain_health/blob/main/DataProcessing_Cleaning.R)
   - Cleans data and removes unused variables
 - [FinalReport.Rmd](https://github.com/jwu458/CS107ProjectGroup14/blob/main/FinalReport.Rmd)
   - Final report for the project
