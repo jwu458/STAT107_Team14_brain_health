@@ -14,8 +14,7 @@ source("00_requirements.R")
 uncleanData <- read_tsv("participants.tsv")
 ```
 
-Changes column names to a more uniform syntaxing for easier reference and removes unused varaiables from the dataset.
-
+Data Cleaning
 ```{r}
 cleanData <- uncleanData[,!names(uncleanData) %in% c("HbA1c", "sex", "bodyweight")]
 names(cleanData)[names(cleanData) == "fasting insulin"] <- "Fasting Insulin"
@@ -34,81 +33,54 @@ source("DataProcessing_Cleaning.R")
 ```
 
 
+Variables
 
-```{r}
-plot(x = cleanData$Age , y = cleanData$HOMA , xlab = "age", ylab = "HOMA", main = "Graph of Age and HOMA", sub = "how age is related to HOMA")
-
-abline(h = 2.5, col = "red")
-
-```
-
-```{r}
-plot(x = cleanData$BMI , y = cleanData$HOMA, xlab = "BMI", ylab = "HOMA", main = "Graph of HOMA and BMI", sub = "How BMI is affecting HOMA")
-
-segments(x0 = 25, y0 = 0, y1 = 2.5, x1 = 25, col = 'red')
-segments(x0 = 0, y0 = 2.5, x1 = 25, y1 = 2.5, col = 'red')
-
-```
-
-
-
-Correlation testing
 ```{r}
 HOMA_vals <- c(cleanData$HOMA)
 na.omit(HOMA_vals)
 BMI_vals <- c(cleanData$BMI)
-
-cor.test(HOMA_vals, BMI_vals)
+age_vals <- c(cleanData$Age)
+fast_insulin_vals <- c(cleanData$`Fasting Insulin`)
 ```
 
+Plots and Correlation Testing
+
+
+Age vs HOMA
 ```{r}
-age_vals <- c(cleanData$Age)
+plot(cleanData$Age, cleanData$HOMA, xlab = "Age", ylab = "HOMA", main = "Age vs HOMA", sub = "Figure 1: How age is related to HOMA")
+abline(h = 2.5, col = 'red')
 
 cor.test(age_vals, HOMA_vals)
 ```
 
+Age vs BMI
 ```{r}
-fast_insulin_vals <- c(cleanData$`Fasting Insulin`)
-
-cor.test(fast_insulin_vals, BMI_vals)
-```
-
-```{r}
-cor.test(age_vals, BMI_vals)
-```
-
-```{r}
-plot(age, homa)
-
-plot(cleanData$Age, cleanData$BMI)
-
+plot(cleanData$Age, cleanData$BMI, xlab = "Age", ylab = "BMI", main = "BMI vs Age", sub = "Figure 2: How age is related to BMI")
 abline(h = 25, col = 'red')
 
-plot(bmi, homa)
-
-plot(fasting insulin, homa)
-
-
-```
-
-```{r}
-plot(cleanData$Age, cleanData$HOMA)
-cor.test(age_vals, HOMA_vals)
-```
-```{r}
-plot(cleanData$Age, cleanData$BMI)
 cor.test(age_vals, BMI_vals)
 ```
 
+BMI vs HOMA
 ```{r}
-plot(cleanData$BMI, cleanData$HOMA)
+plot(cleanData$BMI, cleanData$HOMA, xlab = "BMI", ylab = "HOMA", main = "HOMA vs BMI", sub = "Figure 3: How BMI is related to HOMA")
 segments(x0 = 25, y0 = 0, x1 = 25, y1 = 2.5, col = 'red')
 segments(x0 = 0, y0 = 2.5, x1 = 25, y1 = 2.5, col = 'red')
+
 cor.test(BMI_vals, HOMA_vals)
 ```
 
+Fasting Insulin vs HOMA
 ```{r}
-plot(cleanData$`Fasting Insulin`, cleanData$HOMA)
+plot(cleanData$`Fasting Insulin`, cleanData$HOMA, xlab = "Fasting Insulin", ylab = "HOMA vs Fasting Insulin", sub = "Figure 4: How fasting insulin is related to HOMA")
+
 cor.test(fast_insulin_vals, HOMA_vals)
 ```
+
+Saving Plot Images
+```{r}
+save.image()
+```
+
 
