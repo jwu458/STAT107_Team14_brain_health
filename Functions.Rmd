@@ -17,13 +17,13 @@ uncleanData <- read_tsv("participants.tsv")
 Changes column names to a more uniform syntaxing for easier reference and removes unused varaiables from the dataset.
 
 ```{r}
-
 cleanData <- uncleanData[,!names(uncleanData) %in% c("HbA1c", "sex", "bodyweight")]
 names(cleanData)[names(cleanData) == "fasting insulin"] <- "Fasting Insulin"
 names(cleanData)[names(cleanData) == "age"] <- "Age"
 names(cleanData)[names(cleanData) == "participant_id"] <- "Participant_ID"
 
-na.omit(cleanData)
+cleanData$HOMA <- as.double(cleanData$HOMA)
+cleanData <- na.omit(cleanData)
 
 print(cleanData)
 ```
