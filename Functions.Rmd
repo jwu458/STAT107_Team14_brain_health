@@ -27,11 +27,6 @@ cleanData <- na.omit(cleanData)
 print(cleanData)
 ```
 
-```{r}
-source("00_requirements.r")
-source("DataProcessing_Cleaning.R")
-```
-
 
 Variables
 
@@ -76,11 +71,6 @@ Fasting Insulin vs HOMA
 plot(cleanData$`Fasting Insulin`, cleanData$HOMA, xlab = "Fasting Insulin", ylab = "HOMA vs Fasting Insulin", sub = "Figure 4: How fasting insulin is related to HOMA")
 
 cor.test(fast_insulin_vals, HOMA_vals)
-```
-
-Saving Plot Images
-```{r}
-save.image()
 ```
 
 
