@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Abstract
 
-Brain aging is a natural process that is linked to reduced cognitive abilities, brain volume and neurochemical activity. There are many ways to slow this process down, one of them being diet. The question we seek to answer is "Can keeping a healthy weight and lower insulin resistance help prevent brain aging?". To answer this question, we conducted an analysis on data from an fMRI study of the aging brain on acute ketosis, using scatterplots and correlation tests to see the relationships between age vs HOMA, age vs BMI, BMI vs HOMA, and fasting insulin vs HOMA.
+Brain aging is a natural process that is linked to reduced cognitive abilities, brain volume and neurochemical activity. There are many ways to slow this process down, one of them being diet. The question we seek to answer is "Can keeping a healthy weight and lower insulin resistance help prevent brain aging?". To answer this question, we conducted an analysis on data from an fMRI study of the aging brain on acute ketosis, using scatterplots to see if BMI vs HOMA and age vs HOMA are related.
 
 ## Introduction
 
@@ -22,7 +22,7 @@ As we continue to age and develop, our brain does too. According to the National
 
 Our analysis may benefit anyone who is concerned about their aging brain and want to keep their brains young and healthy for longer than average. It would be especially beneficial for older and elderly adults since they have a higher risk of developing neurodegenerative diseases like Alzheimer's and Parkinson's disease, which can accelerate brain aging. Looking at body weight index (BMI) and HOMA-IR (Homeostatic Model Assessment for Insulin Resistance) scores would help us understand how diet is related to brain aging in different age groups. Analyzing these variables could help people realize what they should change in their diet by adding or subtracting certain foods in their meals. This would be a step in keeping the brain and body healthy as both are interlinked.
 
-To answer our question, we used the data from an fMRI study of the aging brain in acute ketosis. We created scatterplots and ran correlation tests from the data to analyze the relationships between age vs HOMA, age vs BMI, BMI vs HOMA, and fasting insulin vs HOMA. 
+To answer our question, we plan to use the data from an fMRI study of the aging brain in acute ketosis. We plan to create scatterplots from the data to analyze the relationships between BMI vs HOMA and age vs HOMA. 
 
 ## Data
 
@@ -38,13 +38,10 @@ HOMA is a score combining glucose + insulin. when HOMA is high that means bad gl
 
 Hypothesis1: "if age is older then HOMA will be increase"
 
-Age and HOMA plot (p-val = 0.7141, cor = 0.03728332) 
+Create scatter plot to visualize the age relate to HOMA.
+
 ```{r, echo=FALSE}
-<<<<<<< Updated upstream
-image_path <- "plot_age_homa.png" 
-=======
     image_path <- "plot_age_homa.png"
->>>>>>> Stashed changes
     img <- load.image(image_path)
     plot(img)
 ```
@@ -56,8 +53,6 @@ Red line indicates high HOMA which means faster aging, yet data shows HOMA is no
 
 Hypothesis2: if BMI is  higher, does HOMA increases as well.
 
-<<<<<<< Updated upstream
-=======
 Create the scatter plot displays BMI with HOMA.
 
 ```{r, echo=FALSE}
@@ -88,7 +83,6 @@ image_path <- "plot_age_homa.png"
     plot(img)
 ```
 
->>>>>>> Stashed changes
 Age and BMI plot (p-val = 3.75e-05, cor = .401814)
 ```{r, echo=FALSE}
 image_path <- "plot_age_bmi.png"
@@ -110,33 +104,15 @@ image_path <- "plot_insulin_homa.png"
     plot(img)
 ```
 
-
-Shows higher the BMI, HOMA tends to increase as well.
-Red line indicates high HOMA. According to scatter plot, as BMI increases, HOMA increases as well.
-
-high HOMA which can be high insulin resistance = glucose fuel less efficiently
-- brain's activity is depends on glucose, its main fuel source.
-- less efficient it is, there is high possibility that brain can aging faster.
-
-Expected outcomes for age & HOMA, we are expecting older the age = higher the HOMA for hypothesis 1, and 
-for BMI & HOMA, we are expecting higher the BMI = higher the HOMA
-according to data we have and visualized scatter plot graph, we could observe age is not really related to HOMA, yet BMI is relevant to HOMA. As BMI increases, HOMA increases as well.
-
-## Analysis
-
 We performed correlation testing on our relevant variables such as age vs. HOMA, HOMA vs BMI, and fasting insulin levels vs. BMI. The test between age and HOMA proved to be not significant as the p-value = 0.7141 indicating that there was no true correlation between the two. 
-<<<<<<< Updated upstream
-
-However fasting insulin vs BMI and HOMA vs BMI had p-values less than 0.5 indicating that there was a correlation between the two. HOMA and BMI had a correlation of 0.3952 indicating a weak correlation but it still did exist. 
-
-=======
 
 
 However fasting insulin vs BMI and HOMA vs BMI had p-values less than 0.5 indicating that there was a correlation between the two. HOMA and BMI had a correlation of 0.3952 indicating a weak correlation but it still did exist. 
 
 
->>>>>>> Stashed changes
 Fasting insulin and BMI had a correlation of 0.4109 indicating a moderate correlation between the two. 
+
+
 
 Age and BMI had a statistically significant correlation as well with a value of .4018 indicating another moderate correlation.
 
